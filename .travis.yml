@@ -27,7 +27,6 @@ install:
 - ./gradlew dependencies || echo "Hello World!"
 script:
 - ./gradlew build
-- yarn deploy
 deploy:
   provider: releases
   api_key: $GITHUB_TOKEN
@@ -36,3 +35,5 @@ deploy:
   skip_cleanup: true
   on:
     tags: true
+after_deploy:
+- yarn deploy
