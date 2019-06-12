@@ -21,7 +21,8 @@ android:
     # - sys-img-x86-android-28
 before_install:
 - nvm install 11
-
+before_script:
+- chmod +x gradlew
 script:
   - gradlew build
   - yarn deploy
