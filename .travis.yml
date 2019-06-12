@@ -21,7 +21,7 @@ android:
     # - sys-img-x86-android-28
 before_script:
 - nvm install 11
-- chmod +x gradlew
+- chmod +x ./gradlew
 install:
 - ./gradlew dependencies
 script:
