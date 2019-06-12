@@ -1,7 +1,7 @@
 language: android
 dist: trusty
 os:
-- osx
+- linux
 jdk:
 - openjdk12
 before_cache:
