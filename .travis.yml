@@ -24,13 +24,14 @@ before_install:
 - chmod +x ./gradlew
 
 install:
+- echo Installing Glide...
 - wget -P ./app/libs "https://github.com/bumptech/glide/releases/download/v4.7.0/compiler-4.7.0.jar"
 - wget -P ./app/libs "https://github.com/bumptech/glide/releases/download/v4.7.0/annotation-4.7.0.jar"
 - wget -P ./app/libs "https://github.com/bumptech/glide/releases/download/v4.7.0/glide-full-4.7.0.jar"
 - wget -P ./app/libs "https://github.com/bumptech/glide/releases/download/v4.7.0/glide-gifencoder-integration-4.7.0.jar"
-- ./gradlew dependencies
 
 script:
+- echo Building...
 - ./gradlew build
 
 before_deploy:
@@ -48,6 +49,6 @@ deploy:
   file: "./app/build/outputs/apk/*/*.apk"
   skip_cleanup: true
   name: "[Russian $TRAVIS_COMMIT_MESSAGE]($APPETIZE_URL)"
-  prerelease: ${$TRAVIS_COMMIT_MESSAGE =~ ^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(-(0|[1-9]\d*|(beta|alpha)[0-9a-zA-Z-]*)(\.(0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*)(\+[0-9a-zA-Z-]+(\.[0-9a-zA-Z-]+)*)*?$}
+  prerelease: $($TRAVIS_COMMIT_MESSAGE =~ ^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(-(0|[1-9]\d*|(beta|alpha)[0-9a-zA-Z-]*)(\.(0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*)(\+[0-9a-zA-Z-]+(\.[0-9a-zA-Z-]+)*)*?$)
   on:
     condition: $TRAVIS_COMMIT_MESSAGE =~ ^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(-(0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(\.(0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*)?(\+[0-9a-zA-Z-]+(\.[0-9a-zA-Z-]+)*)?$
