@@ -19,7 +19,7 @@ android:
     - build-tools-28.0.3
     # - android-28
     # - sys-img-x86-android-28
-before_script:
+before_install:
 - nvm install 11
 - chmod +x ./gradlew
 install:
