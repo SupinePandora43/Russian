@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<style name="AppTheme" parent="@style/BaseTheme">
+		<item name="android:colorPrimary">?colorPrimary</item>
+		<item name="android:colorPrimaryDark">?colorPrimaryDark</item>
+		<item name="android:colorAccent">?colorAccent</item>
+		<item name="android:statusBarColor">?colorPrimaryDark</item>
+		<!--item name="android:windowTranslucentStatus">true</item>
+		<item name="android:windowTranslucentNavigation">true</item-->
+	</style>
+	<style name="AppTheme.Button" parent="AppTheme.Button.Base">
+		<item name="android:colorButtonNormal">@color/colorAccent</item>
+	</style>
+</resources>

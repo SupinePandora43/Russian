@@ -1,0 +1,16 @@
+apply plugin: 'com.android.library'
+//apply plugin: 'android-maven'
+
+android {
+   compileSdkVersion 19
+//    buildToolsVersion "23.0.2"
+
+    defaultConfig {
+        minSdkVersion 14
+        // targetSdkVersion 23
+    }
+}
+
+dependencies {
+    implementation 'com.android.support:appcompat-v7:+'
+}

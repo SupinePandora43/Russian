@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:id="@+id/musicrecyclerhelpLinearLayout1">
+
+	<TextView
+		android:layout_height="wrap_content"
+		android:textAppearance="?android:attr/textAppearanceMedium"
+		android:layout_width="wrap_content"
+		android:id="@+id/musicrecyclerhelpTextView1"
+		android:layout_marginLeft="10dp"
+		android:text="nameeeeeeeeeeeeeee"
+		android:layout_centerVertical="true"
+		android:layout_alignParentLeft="true"/>
+
+	<com.google.android.material.floatingactionbutton.FloatingActionButton
+		android:layout_height="wrap_content"
+		android:layout_width="wrap_content"
+		app:srcCompat="@drawable/v_play"
+		app:fabSize="normal"
+		android:id="@+id/musicrecyclerhelpFloatingActionButton1"
+		style="@style/Widget.Design.FloatingActionButton"
+		android:layout_alignParentRight="true"
+		android:layout_centerVertical="true"/>
+
+</RelativeLayout>
+

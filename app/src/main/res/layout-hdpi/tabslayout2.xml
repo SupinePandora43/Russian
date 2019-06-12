@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical">
+
+	<TextView
+		android:layout_height="wrap_content"
+		android:text="By SupinePandora43"
+		android:textAppearance="?android:attr/textAppearanceLarge"
+		android:layout_width="wrap_content"
+		android:shadowColor="#D8D8D8"
+		android:shadowDx="5"
+		android:shadowDy="5"
+		android:shadowRadius="5"
+		android:textSize="50sp"/>
+
+	<com.google.android.material.floatingactionbutton.FloatingActionButton
+		android:layout_height="wrap_content"
+		android:layout_width="wrap_content"
+		android:src="@drawable/ic_vk1"
+		android:clickable="true"
+		app:fabSize="normal"
+		android:id="@+id/tabslayout2FloatingActionButton1"
+		app:backgroundTint="@color/vkBackground"/>
+
+</LinearLayout>
+

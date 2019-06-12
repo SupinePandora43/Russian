@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:orientation="vertical"
+	android:gravity="center"
+	android:id="@+id/mainbutLinearLayout1">
+	<Button
+		android:layout_height="wrap_content"
+		android:layout_width="wrap_content"
+		android:onClick="click1"
+		android:text="Русский язык"
+		android:gravity="center"/>
+	<Button
+		android:layout_height="wrap_content"
+		android:text="Математика"
+		android:layout_width="wrap_content"
+		android:onClick="matem"/>
+
+	<Button
+		android:layout_height="wrap_content"
+		android:text="Линейка"
+		android:layout_width="wrap_content"
+		android:onClick="lineyka"/>
+
+	<Button
+		android:layout_height="wrap_content"
+		android:text="о андройде"
+		android:layout_width="wrap_content"
+		android:onClick="ainf"/>
+
+	<!--Button
+		android:layout_height="wrap_content"
+		android:text="хз"
+		android:layout_width="wrap_content"
+		android:onClick="pass"/-->
+
+	<Button
+		android:layout_height="wrap_content"
+		android:text="РКН-кликер"
+		android:layout_width="wrap_content"
+		android:onClick="rkncl"/>
+
+	<Button
+		android:layout_height="wrap_content"
+		android:text="алфавит"
+		android:layout_width="wrap_content"
+		android:onClick="alf"/>
+
+	<Button
+		android:layout_height="wrap_content"
+		android:text="Гдз"
+		android:layout_width="wrap_content"
+		android:onClick="gdz"/>
+
+	<Button
+		android:layout_height="wrap_content"
+		android:text="Расписание"
+		android:layout_width="wrap_content"
+		android:onClick="timeless"/>
+
+	<Button
+		android:layout_height="wrap_content"
+		android:text="вафли"
+		android:layout_width="wrap_content"
+		android:onClick="wafly"/>
+
+	<Button
+		android:layout_height="wrap_content"
+		android:text="camera"
+		android:layout_width="wrap_content"
+		android:onClick="cameram"/>
+
+	<Button
+		android:layout_height="wrap_content"
+		android:text="Рисовалка"
+		android:layout_width="wrap_content"
+		android:onClick="paint"/>
+	<Button
+		android:layout_height="wrap_content"
+		android:text="сенсоры"
+		android:layout_width="wrap_content"
+		android:onClick="sensor"/>
+
+	<Button
+		android:layout_height="wrap_content"
+		android:text="Таблица умножения"
+		android:layout_width="wrap_content"
+		android:onClick="math"/>
+
+</LinearLayout>
+

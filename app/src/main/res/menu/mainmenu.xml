@@ -1,0 +1,12 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+		android:id="@+id/mainmenuitemsettings"
+		android:title="Настройки"
+		android:icon="@drawable/v_settings_primary"
+		app:showAsAction="always"/>
+    <item
+        android:id="@+id/mainmenuitem1"
+        android:title="о приложений"/>
+    
+</menu>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:design="http://schemas.android.com/apk/res-auto"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:gravity="center"
+	android:layout_gravity="center"
+	android:id="@+id/mainCoordinatorLayout1">
+
+	<include
+		layout="@layout/layoutbar"/>
+
+	<androidx.core.widget.NestedScrollView
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:clipToPadding="false"
+		android:scrollbars="vertical"
+		app:layout_behavior="@string/appbar_scrolling_view_behavior"
+		android:id="@+id/mainNestedScrollView1">
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="fill_parent"
+			android:orientation="vertical"
+			android:id="@+id/lins"
+			android:gravity="center">
+
+			<include layout="@layout/mainbut"/>
+		</LinearLayout>
+
+	</androidx.core.widget.NestedScrollView>
+
+	<LinearLayout
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:orientation="vertical"
+		android:id="@+id/bottom_sheet"
+		android:clickable="true"
+		app:behavior_peekHeight="0dp"
+		app:layout_behavior="@string/bottom_sheet_behavior"
+		android:layout_gravity="bottom"
+		android:background="#FFFFFF"
+		android:gravity="top|center">
+
+		<TextView
+			android:layout_height="wrap_content"
+			android:text="музыка"
+			android:textAppearance="?android:attr/textAppearanceMedium"
+			android:layout_width="wrap_content"
+			android:id="@+id/mainTextView1"
+			android:layout_marginBottom="11dp"/>
+
+		<LinearLayout
+			android:layout_height="wrap_content"
+			android:layout_width="match_parent"
+			android:orientation="horizontal">
+
+			<info.kimjihyok.ripplesoundplayer.RippleVisualizerView
+				android:layout_width="280dp"
+				android:layout_height="match_parent"
+				android:id="@+id/mainRippleVisualizerView1"
+				android:background="#84A8F8"/>
+
+			<androidx.recyclerview.widget.RecyclerView
+				android:layout_height="match_parent"
+				android:layout_width="match_parent"
+				android:id="@+id/sheetRecyclerView1"/>
+
+		</LinearLayout>
+
+	</LinearLayout>
+
+	<com.google.android.material.floatingactionbutton.FloatingActionButton
+		android:layout_height="wrap_content"
+		android:layout_width="wrap_content"
+		android:layout_marginRight="60dp"
+		app:srcCompat="@drawable/v_pause"
+		design:fabSize="normal"
+		design:layout_anchor="@id/bottom_sheet"
+		design:layout_anchorGravity="top|end|right"
+		android:id="@+id/mainFloatingActionButton2"/>
+
+	<com.google.android.material.floatingactionbutton.FloatingActionButton
+		android:layout_height="wrap_content"
+		android:layout_width="wrap_content"
+		app:srcCompat="@drawable/v_music"
+		design:fabSize="normal"
+		design:layout_anchor="@id/bottom_sheet"
+		design:layout_anchorGravity="top|end|right"
+		android:id="@+id/mainFloatingActionButton1"/>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+

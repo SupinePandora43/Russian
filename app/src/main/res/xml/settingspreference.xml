@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto">
+	<!--include layout="@layout/layoutbar"/-->
+	<CheckBoxPreference  
+		android:title="Настройки" 
+		android:summaryOn="Включено"
+		android:summaryOff="Выключено"
+		
+		android:key="set"
+		android:defaultValue="off"
+		/>
+	<Preference
+		android:title="Сброс"
+		android:key="reset"
+		/>
+<PreferenceCategory 
+	android:title="Настройки">
+	<CheckBoxPreference
+		android:title="Status Bar 5.0"
+		android:summary="включить симуляцию статус бара 5.0"
+		android:key="statusbar"
+		android:defaultValue="off"
+		android:dependency="set"
+		/>
+	<CheckBoxPreference
+		android:title="Повторять музыку?"
+		android:summary="после окончания музыки она возпроизводётся заново"
+		android:key="repeatplayer"
+		android:icon="@drawable/v_repeat"
+		android:defaultValue="off"
+		android:dependency="set"
+	/>
+	<ListPreference
+		android:title="открытие страниц"
+		android:dependency="set"
+		android:key="mList"
+		android:icon="@drawable/v_browser"
+		android:dialogTitle="браузер Chrome или другой"
+		android:entries="@array/mEntry"
+		android:entryValues="@array/mEntryValues"
+		android:defaultValue="browser"
+		/>
+	<ListPreference
+		android:title="Отображение эквалайзера"
+		android:dependency="set"
+		android:icon="@drawable/v_equalizer"
+		android:key="modeMain"
+		android:dialogTitle="увидишь на главном экране приложения"
+		android:entries="@array/ModesNames"
+		android:entryValues="@array/ModesValues"
+		android:defaultValue="bar"
+	/>
+	<EditTextPreference
+		android:title="Расписание" 
+		android:key="schooltime"
+		android:summary="ссылка на расписание" 
+		android:defaultValue="http://docs.google.com/spreadsheets/d/1oE_VShFd_4DY6xynGvxPPkztb2duZoVvOtF6emfTGtI/htmlview#gid=0"
+		android:dialogTitle="Введите ссылку с http://" />
+</PreferenceCategory>
+	<PreferenceCategory 
+		android:title="ГДЗ"
+		
+		>
+		<EditTextPreference
+			android:title="Математика" 
+			android:key="gdzmatem"
+			android:summary="ссылка на математику" 
+			android:defaultValue="http://gdz.ru/class-6/matematika/a-g-merzlyak/%s-nom"
+			android:dialogTitle="" />
+		<EditTextPreference
+			android:title="Русский язык" 
+			android:key="gdzrus"
+			android:summary="ссылка на руский язык" 
+			android:defaultValue="http://gdz.ru/class-6/russkii_yazik/razumovskaya-lvova-6/"
+			android:dialogTitle="" />
+		
+		
+	</PreferenceCategory>
+</PreferenceScreen>

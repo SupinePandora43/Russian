@@ -1,0 +1,37 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto">
+    
+    <item
+        android:id="@+id/palleteitemmenu"
+        android:title="выбрать цвет"
+		android:icon="@drawable/ic_palette_mini"
+		app:showAsAction="always"/>
+	<item
+        android:id="@+id/paintmenuedit"
+        android:title="none"
+		android:icon="@drawable/v_paint_edit"
+		app:showAsAction="always"/>
+	
+	<item
+		android:id="@+id/paintwidthitem"
+		android:title="ширина"/>
+	<item
+        android:id="@+id/paintmenucolorize"
+        android:title="color"
+		android:icon="@drawable/v_colorize"
+		app:showAsAction="always"/>
+	
+    <item
+		android:id="@+id/eraseitemmenu"
+		android:title="Резинка"/>
+		<!--app:showAsAction="ifRoom|collapseActionView"
+		app:actionViewClass="android.support.v7.widget.AppCompatCheckBox"
+		/>
+		app:actionLayout="@layout/checkboxlayoutmenu"
+		/-->
+	<item
+		android:title="заливка"
+		android:icon="@drawable/v_paint_fill"
+		android:id="@+id/paintmenufill"
+		/>
+</menu>

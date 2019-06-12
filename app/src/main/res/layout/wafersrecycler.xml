@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_height="wrap_content"
+	android:layout_width="match_parent">
+
+	<TextView
+		android:layout_height="wrap_content"
+		android:text="name"
+		android:textAppearance="?android:attr/textAppearanceLarge"
+		android:layout_width="wrap_content"
+		android:layout_alignParentTop="true"
+		android:layout_alignParentLeft="true"
+		android:id="@+id/wafersrecyclerTextView1"
+		android:layout_margin="3dp"/>
+
+	<TextView
+		android:layout_height="wrap_content"
+		android:textAppearance="?android:attr/textAppearanceMedium"
+		android:layout_width="wrap_content"
+		android:id="@+id/wafersrecyclerTextView2"
+		android:layout_below="@id/wafersrecyclerTextView1"
+		android:text="ingr"
+		android:layout_marginLeft="3dp"/>
+
+	<TextView
+		android:layout_height="wrap_content"
+		android:textAppearance="?android:attr/textAppearanceSmall"
+		android:layout_width="wrap_content"
+		android:id="@+id/wafersrecyclerTextView3"
+		android:layout_alignParentRight="true"
+		android:text="recipe"
+		android:layout_margin="3dp"/>
+
+	<TextView
+		android:layout_height="wrap_content"
+		android:text="count"
+		android:textAppearance="?android:attr/textAppearanceLarge"
+		android:layout_width="wrap_content"
+		android:layout_below="@id/wafersrecyclerTextView3"
+		android:id="@+id/wafersrecyclerTextView4"
+		android:layout_alignParentRight="true"
+		android:layout_marginRight="3dp"/>
+
+</RelativeLayout>
+

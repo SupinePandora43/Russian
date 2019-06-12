@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<color name="tabIndicatorColor">#0080BD</color>
+	<color name="vkBackground">#ff4d76a1</color>
+	<color name="colorAccent">#03A9F4</color>
+	<!--color name="colorAccent">#e91e63</color-->
+	<color name="colorPrimary">#00A2FF</color>
+	<color name="colorPrimaryDark">#0081D4</color>
+	<attr name="bartheme" format="string"  />
+
+    <style name="NestedScrollViewStyle">
+        <item name="android:scrollbars">vertical</item>
+    </style>
+	<style name="MyCard" parent="@style/CardView">
+		<item name="cardElevation">10dp</item>
+		<item name="cardCornerRadius">5dp</item>
+		</style>
+	<!-- <style name="MyPreferenceTheme" parent="@style/PreferenceThemeOverlay"> -->
+		<!-- <item name="preferenceStyle">@style/Preference.Material</item> -->
+		<!-- <item name="preferenceScreenStyle">@style/Preference.PreferenceScreen.Material</item> -->
+        <!-- <item name="preferenceFragmentCompatStyle">@style/PreferenceFragment</item> -->
+        <!-- <item name="preferenceFragmentStyle">@style/PreferenceFragment.Material</item> -->
+		<!-- <item name="preferenceFragmentListStyle">@style/PreferenceFragmentList.Material</item> -->
+		<!-- <item name="preferenceCategoryStyle">@style/Preference.Category</item> -->
+		<!-- <item name="preferenceInformationStyle">@style/Preference.Information.Material</item> -->
+
+		<!-- <item name="checkBoxPreferenceStyle">@style/Preference.CheckBoxPreference.Material</item> -->
+        <!-- <item name="switchPreferenceCompatStyle">@style/Preference.SwitchPreferenceCompat</item> -->
+        <!-- <item name="switchPreferenceStyle">@style/Preference.SwitchPreference.Material</item> -->
+        <!-- <item name="dialogPreferenceStyle">@style/Preference.DialogPreference.Material</item> -->
+        <!-- <item name="editTextPreferenceStyle">@style/Preference.DialogPreference.EditTextPreference.Material</item> -->
+
+		<!--item name="preferenceScreenStyle">@style/Preference.PreferenceScreen</item>
+        <item name="preferenceFragmentCompatStyle">@style/PreferenceFragment.Material</item>
+        <item name="preferenceFragmentStyle">@style/PreferenceFragment.Material</item>
+		<item name="preferenceStyle">@style/Preference.Material</item>
+        <item name="preferenceInformationStyle">@style/Preference.Information.Material</item>
+        <item name="checkBoxPreferenceStyle">@style/Preference.CheckBoxPreference.Material</item>
+        <item name="switchPreferenceCompatStyle">@style/Preference.SwitchPreferenceCompat</item>
+        <item name="switchPreferenceStyle">@style/Preference.SwitchPreference.Material</item>
+        <item name="dialogPreferenceStyle">@style/Preference.DialogPreference.Material</item>
+        <item name="editTextPreferenceStyle">@style/Preference.DialogPreference.EditTextPreference.Material</item-->
+        <!--item name="preferenceFragmentListStyle">@style/PreferenceFragmentList.Material</item>
+		<item name="preferenceCategoryStyle">@style/Preference.Category</item-->
+	<!-- </style> -->
+	<style name="AppTheme.Dialog" parent="Theme.AppCompat.Light.Dialog.Alert">
+
+	</style>
+	<style name="AppTheme.Button.Base" parent="Widget.AppCompat.Button.Colored">
+		<item name="android:textColor">#FFFFFF</item>
+	</style>
+	<style name="AppTheme.Button" parent="AppTheme.Button.Base">
+		<item name="colorButtonNormal">@color/colorAccent</item>
+	</style>
+	<style name="AppTheme.Bar" parent="@style/AppTheme">
+		<item name="android:windowTranslucentStatus">false</item>
+		<item name="android:windowTranslucentNavigation">false</item>
+		<item name="bartheme">true</item>
+	</style>
+	<style name="AppTheme.Launcher" parent="AppTheme">
+		<item name="android:windowBackground">@drawable/placeholder</item>
+	</style>
+	<!--style name="AppTheme" parent="@style/Base.V7.Theme.AppCompat.Light"-->
+	<style name="BaseTheme" parent="@style/Theme.AppCompat.Light">
+	<item name="windowActionBar">false</item>
+    <item name="windowNoTitle">true</item>
+
+	<item name="bartheme">false</item>
+
+	<item name="colorAccent">@color/colorAccent</item>
+	<item name="colorPrimary">@color/colorPrimary</item>
+	<item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+
+	<item name="android:clipToPadding">false</item>
+
+	<item name="android:textSelectHandle">@drawable/abc_text_select_handle_middle_mtrl_light</item>
+    <item name="android:textSelectHandleLeft">@drawable/abc_text_select_handle_left_mtrl_light</item>
+    <item name="android:textSelectHandleRight">@drawable/abc_text_select_handle_right_mtrl_light</item>
+    <item name="android:textStyle">italic</item>
+	<item name="isLightTheme">true</item>
+    <item name="actionBarPopupTheme">@style/ThemeOverlay.AppCompat.Light</item>
+	<item name="statusBarBackground">?colorPrimaryDark</item>
+	<item name="statusBarScrim">?colorPrimaryDark</item>
+
+
+		<item name="tabTextColor">#424045</item>
+		<item name="tabSelectedTextColor">#1F1E1E</item>
+	<!--item name="textColorError">@color/design_textinput_error_color_light</item-->
+	<item name="cardElevation">5dp</item>
+	<item name="cardCornerRadius">4dp</item>
+	<!-- <item name="preferenceTheme">@style/MyPreferenceTheme</item> -->
+
+	<!--item name="buttonStyle">@style/AppTheme.Button</item>
+	<item name="android:buttonStyle">?buttonStyle</item-->
+    </style>
+	<style name="AppTheme" parent="@style/BaseTheme">
+
+
+	</style>
+
+</resources>

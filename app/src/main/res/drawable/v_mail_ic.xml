@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+        android:height="24dp"
+        android:viewportHeight="24.0"
+        android:viewportWidth="24.0"
+        android:width="24dp" >
+
+    <group
+            android:name="mail"
+            android:rotation="90.0"
+            android:pivotX="12.0"
+            android:pivotY="12.0">
+        <path 
+			android:fillColor="#FFFFFF"
+			android:pathData="M39.0,301.22742L39.0,301.22742L439.0,301.22742L443.77258,306.0L443.77258,496.0008L439.0,500.77338L39.0,500.77338L34.22742,496.0008L34.22742,306.0L39.0,301.22742 M39.0,310.77258L43.77258,306.0L43.77258,496.0008L39.0,491.2282L439.0,491.2282L434.22742,496.0008L434.22742,306.0L439.0,310.77258L39.0,310.77258 Z" />
+        <path
+			android:fillColor="#FFFFFF" 
+			android:pathData="M236.96732,371.1854L236.96732,371.1854L43.733162,317.09927L39.20711,315.83243L41.740788,306.7803L46.266838,308.04715L239.501,362.13327L244.02705,363.40012L241.49336,372.45224 Z" />
+		<path
+			android:fillColor="#FFFFFF" 
+			android:pathData="M243.03268,371.1854L243.03268,371.1854L436.26685,317.09927L440.79288,315.83243L438.25922,306.7803L433.73315,308.04715L240.499,362.13327L235.97295,363.40012L238.50664,372.45224 Z" />
+    </group>
+</vector>

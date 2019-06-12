@@ -1,0 +1,84 @@
+apply plugin: 'com.android.application'
+// apply plugin: 'android'
+//apply plugin: 'kotlin-android'
+// buildscript{
+	// dependencies{
+		// classpath 'com.android.tools.build:gradle:3.0.0'
+	// }
+
+// }
+android {
+    compileSdkVersion 28
+    buildToolsVersion "28.0.3"
+	//sourceSets {
+      //main.java.srcDirs += 'src/main/java'
+	  //main.res.srcDirs += 'src/main/res'
+	  //}
+    defaultConfig {
+        applicationId "ru.supinepandora.russianhelper"
+        minSdkVersion 16  //from 14 to 15 (for fix errors:aapt)
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+		vectorDrawables.useSupportLibrary=true
+		javaCompileOptions {
+            annotationProcessorOptions {
+                includeCompileClasspath false
+            }
+        }
+		//multiDexEnabled true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+	lintOptions {
+		abortOnError false
+	}
+}
+
+dependencies {
+	implementation 'androidx.appcompat:appcompat:1.0.0'
+	implementation 'com.google.android.material:material:1.0.0-rc01'
+	implementation 'com.jjoe64:graphview:4.2.2'
+	// implementation project(':GraphView')
+
+
+	//implementation 'com.android.support:multidex:+'
+	//implementation 'com.android.support:multidex-instrumentation:+'
+	implementation project(':RecyclerIntentChooser')
+	//implementation 'junit:junit:+'
+	// implementation project(':RippleDrawableSupport')
+	implementation 'com.github.ozodrukh:RippleDrawable:2.0.0'
+
+	//implementation project(':fabtoolbar');
+//	implementation 'info.kimjihyok:droid-vizu:+'
+	implementation project(':ripplesoundplayer');
+
+
+	// implementation project(':colorpickerpreference');
+	implementation "com.github.skydoves:colorpickerview:+"
+
+	// implementation project(':material-design-colors');
+
+	// implementation project(':sherlock');
+	implementation 'com.github.ajitsing:sherlock:+'
+
+	//implementation project(':MPChartLib')
+	//implementation project(':material');
+	//implementation 'com.jakewharton:butterknife:7.0.0'
+	//implementation 'com.zawadz88:material-activity-chooser:+'
+	//implementation 'org.jetbrains.kotlin:kotlin-stdlib-jre7:+'
+	implementation 'com.evrencoskun.library:tableview:+'
+	//implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0-alpha'
+	implementation 'androidx.preference:preference:1.0.0'
+	// implementation 'com.android.support:support-v4:+'
+	implementation 'androidx.recyclerview:recyclerview:1.0.0'
+	implementation 'androidx.cardview:cardview:1.0.0'
+	//implementation 'com.android.support.test:testing-support-lib:+'
+    // implementation fileTree(dir: 'libs', include: ['*.jar'])
+	implementation 'com.github.bumptech.glide:glide:4.7.0'
+	//implementation project(':library');
+}
