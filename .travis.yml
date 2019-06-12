@@ -4,6 +4,7 @@ os:
 - linux
 jdk:
 - openjdk12
+
 before_cache:
 - rm -f $HOME/.gradle/caches/5.2.1/executionHistory/executionHistory.lock
 - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
