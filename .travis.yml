@@ -23,6 +23,10 @@ before_install:
 - nvm install 11
 - chmod +x ./gradlew
 install:
+- wget -P ./app/libs "https://github.com/bumptech/glide/releases/download/v4.7.0/compiler-4.7.0.jar"
+- wget -P ./app/libs "https://github.com/bumptech/glide/releases/download/v4.7.0/annotation-4.7.0.jar"
+- wget -P ./app/libs "https://github.com/bumptech/glide/releases/download/v4.7.0/glide-full-4.7.0.jar"
+- wget -P ./app/libs "https://github.com/bumptech/glide/releases/download/v4.7.0/glide-gifencoder-integration-4.7.0.jar"
 - ./gradlew dependencies || echo "Hello World!"
 script:
 - ./gradlew build
