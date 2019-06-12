@@ -23,7 +23,7 @@ before_install:
 - nvm install 11
 
 script:
-  - chmod +x gradlew build
+  - gradlew build
   - yarn deploy
 deploy:
   provider: releases
