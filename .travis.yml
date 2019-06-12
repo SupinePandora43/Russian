@@ -17,13 +17,13 @@ android:
     # - tools
     # - platform-tools
     - build-tools-28.0.3
-    # - android-28
+    - android-28
     # - sys-img-x86-android-28
 before_install:
 - nvm install 11
 - chmod +x ./gradlew
 install:
-- ./gradlew dependencies
+- ./gradlew dependencies || echo "Hello World!"
 script:
 - ./gradlew build
 - yarn deploy
