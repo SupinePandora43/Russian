@@ -19,16 +19,17 @@ android:
     - build-tools-28.0.3
     - android-28
     - sys-img-x86-android-28
-# before_install:
-#   - wget http://services.gradle.org/distributions/gradle-5.2.1-bin.zip
-#   - unzip -qq gradle-5.2.1-bin.zip
-#   - export GRADLE_HOME=$PWD/gradle-5.2.1
-#   - export PATH=$GRADLE_HOME/bin:$PATH
-#   - gradle -v
+before_install:
+- nvm install 11
+- wget http://services.gradle.org/distributions/gradle-5.2.1-bin.zip
+- unzip -qq gradle-5.2.1-bin.zip
+- export GRADLE_HOME=$PWD/gradle-5.2.1
+- export PATH=$GRADLE_HOME/bin:$PATH
+- gradle -v
 
 script:
-  - "gradle build"
-  - "yarn deploy"
+  - gradle build
+  - yarn deploy
 deploy:
   provider: releases
   api_key: $GITHUB_TOKEN
