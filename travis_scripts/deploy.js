@@ -1,9 +1,10 @@
 console.log("Deploying...")
 var child_process = require("child_process")
-child_process.exec(`bash -c \'curl https://${process.env.APPETIZE_TOKEN}@api.appetize.io/v1/apps` +
+function deploy(){
+	child_process.exec(`bash -c \'curl https://${process.env.APPETIZE_TOKEN}@api.appetize.io/v1/apps` +
 	` -F "file=@./app/build/outputs/apk/debug/app-debug.apk"` +
 	` -F "platform=android"\'`,
-	function (error, stdout, _stderr) {
+	(error, stdout, stderr) => {
 		if (error == null) {
 			var output = JSON.parse(stdout)
 			console.log(output.publicURL)
@@ -24,5 +25,16 @@ child_process.exec(`bash -c \'curl https://${process.env.APPETIZE_TOKEN}@api.app
 		} else {
 			console.error("ERROR:")
 			console.error(error)
+			console.error(stderr)
 		}
 	})
+
+}
+if(process.env.CI == "true"){
+	var commit_name = process.env.TRAVIS_COMMIT_MESSAGE
+	if(commit_name.match(/^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(-(0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(\.(0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*)?(\+[0-9a-zA-Z-]+(\.[0-9a-zA-Z-]+)*)?$/).length>=1){
+		deploy()
+	}
+}else{
+	deploy()
+}

@@ -2,6 +2,7 @@ language: android
 dist: trusty
 os:
 - linux
+- osx
 jdk:
 - openjdk12
 before_cache:
@@ -9,7 +10,7 @@ before_cache:
 - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
 - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
 cache:
-  npm: true
+  yarn: true
   directories:
     - $HOME/.gradle/caches/
     - $HOME/.gradle/wrapper/
@@ -25,19 +26,14 @@ before_install:
 - chmod +x ./gradlew
 
 install:
-- echo Installing Glide...
-- wget -P ./app/libs "https://github.com/bumptech/glide/releases/download/v4.7.0/compiler-4.7.0.jar"
-- wget -P ./app/libs "https://github.com/bumptech/glide/releases/download/v4.7.0/annotation-4.7.0.jar"
-- wget -P ./app/libs "https://github.com/bumptech/glide/releases/download/v4.7.0/glide-full-4.7.0.jar"
-- wget -P ./app/libs "https://github.com/bumptech/glide/releases/download/v4.7.0/glide-gifencoder-integration-4.7.0.jar"
+- yarn glide
 
 script:
-- echo Building...
 - ./gradlew build
 
 before_deploy:
 - export TRAVIS_TAG=v$TRAVIS_COMMIT_MESSAGE
-- if [ $TRAVIS_COMMIT_MESSAGE =~ "^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(-(0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(\.(0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*)?(\+[0-9a-zA-Z-]+(\.[0-9a-zA-Z-]+)*)?$" ]; then node ./deploy/deploy.js; fin
+- yarn appetize
 
 deploy:
 - provider: releases

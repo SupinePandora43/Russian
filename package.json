@@ -1,12 +1,11 @@
 {
-  "name": "deploy_project",
-  "description": "just deploy!",
+  "name": "scripts_for_travis",
+  "description": "scripts or travis",
   "authors": "SupinePandora43",
   "version": "1.0.0",
-  "main": "./deploy/deploy.js",
-  "scripts":{
-    "deploy":"node deploy/deploy.js",
-    "error":"echo "
+  "scripts": {
+    "appetize": "node travis_scripts/deploy.js",
+    "glide": "node travis_scripts/get-glide.js"
   },
   "dependencies": {}
 }
