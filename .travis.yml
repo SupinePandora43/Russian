@@ -19,13 +19,14 @@ android:
     - build-tools-28.0.3
     # - android-28
     # - sys-img-x86-android-28
-before_install:
-- nvm install 11
 before_script:
+- nvm install 11
 - chmod +x gradlew
+install:
+- ./gradlew dependencies
 script:
-  - gradlew build
-  - yarn deploy
+- ./gradlew build
+- yarn deploy
 deploy:
   provider: releases
   api_key: $GITHUB_TOKEN
