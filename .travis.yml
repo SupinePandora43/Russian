@@ -14,11 +14,11 @@ cache:
     - $HOME/.android/build-cache
 android:
   components:
-    - tools
-    - platform-tools
+    # - tools
+    # - platform-tools
     - build-tools-28.0.3
-    - android-28
-    - sys-img-x86-android-28
+    # - android-28
+    # - sys-img-x86-android-28
 before_install:
 - nvm install 11
 - wget http://services.gradle.org/distributions/gradle-5.2.1-bin.zip
