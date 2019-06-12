@@ -51,7 +51,7 @@ dependencies {
 	implementation project(':RecyclerIntentChooser')
 	//implementation 'junit:junit:+'
 	// implementation project(':RippleDrawableSupport')
-	implementation 'com.github.ozodrukh:RippleDrawable:2.0.0'
+	implementation 'com.github.ozodrukh:RippleDrawable:2.0.1'
 
 	//implementation project(':fabtoolbar');
 //	implementation 'info.kimjihyok:droid-vizu:+'
