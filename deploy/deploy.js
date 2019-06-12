@@ -10,7 +10,7 @@ child_process.exec(`bash -c \'curl https://${process.env.APPETIZE_TOKEN}@api.app
 			console.log("Deployed!")
 			if (process.env.CI == "true") {
 				console.log("CI")
-				if (process.platform == ("linux")) {
+				if (process.platform == "linux") {
 					child_process.exec("export APPETIZE_URL=" + output.publicURL)
 					console.log("(LINUX) APPETIZE_URL setted to " + output.publicURL)
 				} else if (process.platform == "darwin") {
