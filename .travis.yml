@@ -1,14 +1,15 @@
 language: android
 dist: trusty
-jdk:
-- openjdk12
 os:
 - linux
-
+jdk:
+- openjdk12
+node_js: "11"
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
   - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
 cache:
+  yarn: true
   directories:
     - $HOME/.gradle/caches/
     - $HOME/.gradle/wrapper/
@@ -20,7 +21,7 @@ android:
     - android-28
 
 before_install:
-- nvm install 11
+# - nvm install 11
 - chmod +x ./gradlew
 install:
 - wget -P ./app/libs "https://github.com/bumptech/glide/releases/download/v4.7.0/compiler-4.7.0.jar"
@@ -46,6 +47,6 @@ deploy:
   file: "./app/build/outputs/apk/*/*.apk"
   skip_cleanup: true
   name: "[Russian $TRAVIS_COMMIT_MESSAGE]($APPETIZE_URL)"
-  prerelease: $TRAVIS_COMMIT_MESSAGE =~ ^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(-(0|[1-9]\d*|(beta|alpha)[0-9a-zA-Z-]*)(\.(0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*)(\+[0-9a-zA-Z-]+(\.[0-9a-zA-Z-]+)*)*?$
+  prerelease: ${$TRAVIS_COMMIT_MESSAGE =~ ^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(-(0|[1-9]\d*|(beta|alpha)[0-9a-zA-Z-]*)(\.(0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*)(\+[0-9a-zA-Z-]+(\.[0-9a-zA-Z-]+)*)*?$}
   on:
     condition: $TRAVIS_COMMIT_MESSAGE =~ ^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(-(0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(\.(0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*)?(\+[0-9a-zA-Z-]+(\.[0-9a-zA-Z-]+)*)?$
