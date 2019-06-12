@@ -10,7 +10,7 @@ var fileNames = [
 fileNames.forEach(file => {
 	fs.access(dirPath + file, fs.constants.F_OK, (err) => {
 		if (err) {
-			child_process.exec(`bash -c wget -P ${dirPath} "https://github.com/bumptech/glide/releases/download/v4.7.0/${file}"`,
+			child_process.exec(`bash -c 'wget -P ${dirPath} "https://github.com/bumptech/glide/releases/download/v4.7.0/${file}"'`,
 				(error, _stdout, stderr) => {
 					if (error) {
 						console.error("GLIDE: ERROR while downloading " + file)
