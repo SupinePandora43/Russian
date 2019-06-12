@@ -34,6 +34,7 @@ script:
 before_deploy:
 - export TRAVIS_TAG=v$TRAVIS_COMMIT_MESSAGE
 - yarn appetize
+- echo $APPETIZE_URL
 
 deploy:
 - provider: releases
@@ -41,6 +42,6 @@ deploy:
   file_glob: true
   file: "./app/build/outputs/apk/*/*.apk"
   skip_cleanup: true
-  name: "[Russian $TRAVIS_COMMIT_MESSAGE]($APPETIZE_URL)"
+  name: "Russian $TRAVIS_COMMIT_MESSAGE"
   on:
     condition: $TRAVIS_COMMIT_MESSAGE =~ ^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(-(0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(\.(0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*)?(\+[0-9a-zA-Z-]+(\.[0-9a-zA-Z-]+)*)?$

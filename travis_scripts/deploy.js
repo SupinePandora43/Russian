@@ -30,11 +30,4 @@ function deploy(){
 	})
 
 }
-if(process.env.CI == "true"){
-	var commit_name = process.env.TRAVIS_COMMIT_MESSAGE
-	if(commit_name.match(/^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(-(0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(\.(0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*)?(\+[0-9a-zA-Z-]+(\.[0-9a-zA-Z-]+)*)?$/).length>=1){
-		deploy()
-	}
-}else{
-	deploy()
-}
+deploy()
