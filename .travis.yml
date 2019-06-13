@@ -6,7 +6,6 @@ before_cache:
 - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
 - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
 jdk:
-- openjdk12
 - openjdk8
 cache:
   npm: true
@@ -29,6 +28,8 @@ script: ./gradlew build
 matrix:
   include:
     - name: "build"
+      jdk:
+      - openjdk8
       before_deploy:
       - export TRAVIS_TAG=$(date +'%Y.%m.%d')
       - node ./travis_scripts/deploy.js
