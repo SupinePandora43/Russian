@@ -1,7 +1,9 @@
 language: android
+os: linux
 dist: trusty
-os:
-- linux
+jdk:
+- openjdk12
+- openjdk8
 
 before_cache:
 - rm -fr $HOME/.gradle/caches/5.2.1
@@ -22,15 +24,11 @@ stages:
   - build
 jobs:
   include:
-    - stage: install
-      script:
-        - nvm install 11
-        - yarn glide
     - stage: build
+      before_install: nvm install 11
+      install: yarn glide
       before_script: chmod +x ./gradlew
       script: ./gradlew build
-    - stage: deploy
-      script: true
       deploy:
         provider: releases
         api_key: $GITHUB_TOKEN
@@ -44,7 +42,6 @@ jobs:
 
 
 before_deploy:
-- export TRAVIS_TAG=v$TRAVIS_COMMIT_MESSAGE
 - yarn appetize
 - echo $APPETIZE_URL
 
