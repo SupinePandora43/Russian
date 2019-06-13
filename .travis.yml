@@ -2,8 +2,6 @@ language: android
 dist: trusty
 os:
 - linux
-jdk:
-- openjdk12
 
 before_cache:
 - rm -fr $HOME/.gradle/caches/5.2.1
@@ -15,33 +13,38 @@ cache:
     - $HOME/.gradle/caches/
     - $HOME/.gradle/wrapper/
     - $HOME/.android/build-cache
-
 android:
   components:
     - build-tools-28.0.3
     - android-28
+stages:
+  - install
+  - build
+jobs:
+  include:
+    - stage: install
+      script:
+        - nvm install 11
+        - yarn glide
+    - stage: build
+      before_script: chmod +x ./gradlew
+      script: ./gradlew build
+    - stage: deploy
+      script: true
+      deploy:
+        provider: releases
+        api_key: $GITHUB_TOKEN
+        file_glob: true
+        file: "./app/build/outputs/apk/*/*.apk"
+        skip_cleanup: true
+        name: $(date +'%Y.%m.%d.%H:%M.%S')
+        # on:
+          # condition: $TRAVIS_COMMIT_MESSAGE =~ ^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(-(0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(\.(0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*)?(\+[0-9a-zA-Z-]+(\.[0-9a-zA-Z-]+)*)?$
 
-before_install:
-- nvm install 11
-- chmod +x ./gradlew
 
-install:
-- yarn glide
-
-script:
-- ./gradlew build
 
 before_deploy:
 - export TRAVIS_TAG=v$TRAVIS_COMMIT_MESSAGE
 - yarn appetize
 - echo $APPETIZE_URL
 
-deploy:
-- provider: releases
-  api_key: $GITHUB_TOKEN
-  file_glob: true
-  file: "./app/build/outputs/apk/*/*.apk"
-  skip_cleanup: true
-  name: "Russian $TRAVIS_COMMIT_MESSAGE"
-  on:
-    condition: $TRAVIS_COMMIT_MESSAGE =~ ^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(-(0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(\.(0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*)?(\+[0-9a-zA-Z-]+(\.[0-9a-zA-Z-]+)*)?$

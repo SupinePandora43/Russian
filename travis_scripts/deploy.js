@@ -13,6 +13,7 @@ function deploy(){
 				console.log("CI")
 				if (process.platform == "linux") {
 					child_process.exec("export APPETIZE_URL=" + output.publicURL)
+					process.env.APPETIZE_URL = output.publicURL
 					console.log("(LINUX) APPETIZE_URL setted to " + output.publicURL)
 				} else if (process.platform == "darwin") {
 					child_process.exec("setenv APPETIZE_URL=" + output.publicURL)
