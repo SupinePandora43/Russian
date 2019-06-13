@@ -19,31 +19,26 @@ android:
   components:
   - build-tools-28.0.3
   - android-28
+
 branches:
   only:
     - master
-stages:
-- build
-matrix:
-  include:
-  - stage: build
-    before_install: nvm install 11
-    install: yarn glide
-    before_script: chmod +x ./gradlew
-    script: ./gradlew build
-    deploy:
-      provider: releases
-      api_key: $GITHUB_TOKEN
-      file_glob: true
-      file: "./app/build/outputs/apk/*/*.apk"
-      skip_cleanup: true
-      name: $(date +'%Y.%m.%d.%H:%M.%S')
-      on:
-        branch: master
-      # on:
-        # condition: $TRAVIS_COMMIT_MESSAGE =~ ^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(-(0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(\.(0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*)?(\+[0-9a-zA-Z-]+(\.[0-9a-zA-Z-]+)*)?$
 
-
+before_install: nvm install 11
+install: yarn glide
+before_script: chmod +x ./gradlew
+script: ./gradlew build
+deploy:
+  provider: releases
+  api_key: $GITHUB_TOKEN
+  file_glob: true
+  file: "./app/build/outputs/apk/*/*.apk"
+  skip_cleanup: true
+  name: $(date +'%Y.%m.%d.%H:%M.%S')
+  on:
+    branch: master
+  # on:
+    # condition: $TRAVIS_COMMIT_MESSAGE =~ ^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(-(0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(\.(0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*)?(\+[0-9a-zA-Z-]+(\.[0-9a-zA-Z-]+)*)?$
 
 before_deploy:
 - yarn appetize
