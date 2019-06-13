@@ -20,7 +20,6 @@ android:
     - build-tools-28.0.3
     - android-28
 stages:
-  - install
   - build
 jobs:
   include:
