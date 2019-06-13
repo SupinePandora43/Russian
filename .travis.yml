@@ -28,12 +28,9 @@ before_install: nvm install 11
 install: node ./travis_scripts/get-glide.js
 before_script: chmod +x ./gradlew
 script: ./gradlew build
-stages:
-- testJDK
-- deploy
-jobs:
+matrix:
   include:
-    - stage: deploy
+    - name: "deploy"
       before_deploy:
       - export TRAVIS_TAG=$(date +'%Y.%m.%d')
       - node ./travis_scripts/deploy.js
@@ -47,12 +44,6 @@ jobs:
         name: $(date +'%Y.%m.%d.%H:%M.%S')
         on:
           branch: master
-    - &testJDK
-      stage: testJDK
-      jdk:
-      - openjdk12
-      - openjdk8
-    - <<: *testJDK
 
   # on:
     # condition: $TRAVIS_COMMIT_MESSAGE =~ ^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(-(0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(\.(0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*)?(\+[0-9a-zA-Z-]+(\.[0-9a-zA-Z-]+)*)?$
