@@ -29,7 +29,7 @@ matrix:
   include:
     - name: "build"
       jdk:
-      - openjdk8
+      - openjdk12
       before_deploy:
       - export TRAVIS_TAG=$(date +'%Y.%m.%d')
       - node ./travis_scripts/deploy.js
