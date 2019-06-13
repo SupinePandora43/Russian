@@ -9,7 +9,7 @@ jdk:
 - openjdk12
 - openjdk8
 cache:
-  yarn: true
+  npm: true
   directories:
   - $HOME/.gradle/caches/
   - $HOME/.gradle/wrapper/
@@ -26,9 +26,9 @@ before_install: nvm install 11
 install: node ./travis_scripts/get-glide.js
 before_script: chmod +x ./gradlew
 script: ./gradlew build
-jobs:
+matrix:
   include:
-    - stage: build
+    - name: "build"
       before_deploy:
       - export TRAVIS_TAG=$(date +'%Y.%m.%d')
       - node ./travis_scripts/deploy.js
