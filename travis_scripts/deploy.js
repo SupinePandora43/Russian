@@ -11,13 +11,14 @@ function deploy(){
 			console.log("Deployed!")
 			if (process.env.CI == "true") {
 				console.log("CI")
-				if (process.platform == "linux") {
-					child_process.exec("export APPETIZE_URL=" + output.publicURL)
+				if (process.platform == "linux"||process.platform == "darwin") {
+					child_process.exec("export APPETIZE_URL=" + output.publicURL, (error,stdout,stderr)=>{
+						console.log(error)
+						console.log(stdout)
+						console.log(stderr)
+					})
 					process.env.APPETIZE_URL = output.publicURL
-					console.log("(LINUX) APPETIZE_URL setted to " + output.publicURL)
-				} else if (process.platform == "darwin") {
-					child_process.exec("setenv APPETIZE_URL=" + output.publicURL)
-					console.log("(OSX) APPETIZE_URL setted to " + output.publicURL)
+					console.log("(LINUX/OSX) APPETIZE_URL setted to " + output.publicURL)
 				} else if (process.platform == "win32") {
 					child_process.exec("set APPETIZE_URL=" + output.publicURL)
 					console.log("(WIN32) APPETIZE_URL setted to " + output.publicURL)
