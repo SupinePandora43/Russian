@@ -32,7 +32,7 @@ install: node ./travis_scripts/get-glide.js
 before_script: chmod +x ./gradlew
 script: ./gradlew build
 matrix:
-  fast_finish: true
+  # fast_finish: true
   include:
     - name: "deploy"
       before_deploy:
