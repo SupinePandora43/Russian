@@ -30,6 +30,7 @@ matrix:
       before_deploy:
       - export TRAVIS_TAG=$(date +'%Y.%m.%d')
       - node ./travis_scripts/deploy.js
+      - chmod +x ./travis_scripts/appetize_url.sh
       - ./travis_scripts/appetize_url.sh
       - echo $APPETIZE_URL
       deploy:
