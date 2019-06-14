@@ -13,6 +13,7 @@ cache:
   - $HOME/.android/build-cache
 android:
   components:
+  - platform-tools
   - build-tools-28.0.3
   - android-$API
   - sys-img-$ABI-android-$API
@@ -29,8 +30,8 @@ branches:
     - master
 
 before_install:
-- touch ~/.android/repositories.cfg
-- yes | sdkmanager "platforms;android-$API"
+# - touch ~/.android/repositories.cfg
+# - yes | sdkmanager "platforms;android-$API"
 - nvm install 11
 install:
 - node ./travis_scripts/get-glide.js
