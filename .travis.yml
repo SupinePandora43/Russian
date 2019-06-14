@@ -56,11 +56,6 @@ install:
 - adb shell input keyevent 82 &
 before_script: chmod +x ./gradlew
 script: ./gradlew connectedCheck
-tests: &tests
-- env:
-  - ABI=x86_64
-  - ABI=x86
-  - ABI=armeabi-v7a
 matrix:
   fast_finish: true
   allow_failures:
@@ -71,7 +66,10 @@ matrix:
     - env: API=19 ABI=x86_64
     - env: API=16 ABI=x86_64
   include:
-  - <<: tests*
+  - env:
+    - ABI=x86_64
+    - ABI=x86
+    - ABI=armeabi-v7a
   - name: deploy
     env: API=28 ABI=x86_64
     before_install: nvm install 11
