@@ -32,7 +32,6 @@ env:
 
   - API=19 ABI=x86         #
   - API=19 ABI=armeabi-v7a #
-  - API=19 ABI=armeabi     #
 
   - API=16 ABI=x86         #
   - API=16 ABI=armeabi-v7a #
@@ -49,7 +48,7 @@ before_install:
 install:
 - node ./travis_scripts/get-glide.js
 - echo no | android create avd --force -n test -t android-$API --abi $ABI -c 100M
-- emulator -avd test -no-accel -gpu swiftshader -no-audio -no-window &
+- emulator -avd test -no-accel -gpu auto -no-audio -no-window &
 - android-wait-for-emulator
 - adb shell input keyevent 82 &
 before_script: chmod +x ./gradlew
