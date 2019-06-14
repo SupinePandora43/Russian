@@ -13,26 +13,39 @@ cache:
   - $HOME/.android/build-cache
 android:
   components:
+  - platform-tools
+  - tools
   - build-tools-28.0.3
   - android-28
-
+env:
+  global:
+  - ADB_INSTALL_TIMEOUT=8
+  - ABI=armeabi-v7a
+  matrix:
+  - API=19
+  - API=29 ABI=x86_64
 branches:
   only:
     - master
 before_install: nvm install 11
-install: node ./travis_scripts/get-glide.js
+install:
+- node ./travis_scripts/get-glide.js
+- echo no | android create avd --force -n test -t android-$API --abi $ABI -c 100M
+- emulator -avd test -no-audio -no-window &
+- android-wait-for-emulator
+- adb shell input keyevent 82 &
 before_script: chmod +x ./gradlew
-script: ./gradlew build
-matrix:
+script: ./gradlew connectedCheck
+stages:
+- test
+- deploy
+jobs:
   include:
-    - jdk: openjdk8
-    - jdk: openjdk12
-      before_deploy:
-      - export TRAVIS_TAG=latest
-      - node ./travis_scripts/deploy.js
-      - chmod +x ./travis_scripts/appetize_url.sh
-      - ./travis_scripts/appetize_url.sh
-      - echo $APPETIZE_URL
+    - stage: deploy
+      before_install: nvm install 11
+      install: node ./travis_scripts/get-glide.js
+      before_script: chmod +x ./gradlew
+      script: ./gradlew build
       deploy:
         provider: releases
         api_key: $GITHUB_TOKEN
@@ -42,6 +55,30 @@ matrix:
         name: $(date +'%Y.%m.%d.%H:%M.%S')
         on:
           branch: master
+    # - &test
+    #   stage: testJDK
+    #   jdk:
+    #   - openjdk8
+    # - <<: *test
+# matrix:
+#   include:
+#     - jdk: openjdk8
+#     - jdk: openjdk12
+#       before_deploy:
+#       - export TRAVIS_TAG=latest
+#       - node ./travis_scripts/deploy.js
+#       - chmod +x ./travis_scripts/appetize_url.sh
+#       - ./travis_scripts/appetize_url.sh
+#       - echo $APPETIZE_URL
+#       deploy:
+#         provider: releases
+#         api_key: $GITHUB_TOKEN
+#         file_glob: true
+#         file: "./app/build/outputs/apk/*/*.apk"
+#         skip_cleanup: true
+#         name: $(date +'%Y.%m.%d.%H:%M.%S')
+#         on:
+#           branch: master
 
   # on:
     # condition: $TRAVIS_COMMIT_MESSAGE =~ ^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(-(0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(\.(0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*)?(\+[0-9a-zA-Z-]+(\.[0-9a-zA-Z-]+)*)?$
