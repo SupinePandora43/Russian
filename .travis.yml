@@ -26,6 +26,7 @@ env:
 branches:
   only:
     - master
+
 before_install:
 - yes | sdkmanager "platforms;android-$API"
 - nvm install 11
