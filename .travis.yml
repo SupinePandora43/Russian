@@ -23,6 +23,7 @@ env:
   matrix:
   - API=19 ABI=armeabi-v7a
   - API=28 ABI=x86_64
+
 branches:
   only:
     - master
