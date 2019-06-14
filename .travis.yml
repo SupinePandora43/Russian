@@ -16,7 +16,7 @@ android:
   - platform-tools
   - tools
   - build-tools-28.0.3
-  - android-28
+  - android-$API
   - sys-img-armeabi-v7a-addon-google_apis-google-$API
   - addon-google_apis-google-$API
 env:
@@ -42,6 +42,8 @@ stages:
 - test
 - deploy
 jobs:
+  allow_failures:
+    - language: android
   include:
     - stage: deploy
       before_install: nvm install 11
