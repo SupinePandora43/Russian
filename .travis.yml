@@ -36,7 +36,6 @@ env:
 
   - API=16 ABI=x86         #
   - API=16 ABI=armeabi-v7a #
-  - API=16 ABI=armeabi     #
 
 branches:
   only:
