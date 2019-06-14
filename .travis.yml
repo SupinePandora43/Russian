@@ -28,7 +28,7 @@ matrix:
     - jdk: openjdk8
     - jdk: openjdk12
       before_deploy:
-      - export TRAVIS_TAG=$(date +'%Y.%m.%d')
+      - export TRAVIS_TAG=latest
       - node ./travis_scripts/deploy.js
       - chmod +x ./travis_scripts/appetize_url.sh
       - ./travis_scripts/appetize_url.sh
