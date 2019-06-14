@@ -30,7 +30,7 @@ branches:
     - master
 
 before_install:
-- android-update-sdk --components=sys-img-$ABI-$API --accept-licenses='android-sdk-license-[0-9a-f]{8}'
+- android-update-sdk --components=sys-img-$ABI-android-$API --accept-licenses='android-sdk-license-[0-9a-f]{8}'
 # - touch ~/.android/repositories.cfg
 # - yes | sdkmanager "platforms;android-$API"
 - nvm install 11
