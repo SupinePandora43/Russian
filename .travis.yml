@@ -17,6 +17,7 @@ android:
   - platform-tools
   - build-tools-28.0.3
   - android-28
+  - android-$API
 env:
   global:
   - ADB_INSTALL_TIMEOUT=8
