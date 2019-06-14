@@ -12,7 +12,7 @@
 		android:layout_width="wrap_content"
 		android:id="@+id/musicrecyclerhelpTextView1"
 		android:layout_marginLeft="10dp"
-		android:text="nameeeeeeeeeeeeeee"
+		android:text="why you can see this?"
 		android:layout_centerVertical="true"
 		android:layout_alignParentLeft="true"/>
 
@@ -22,7 +22,6 @@
 		app:srcCompat="@drawable/v_play"
 		app:fabSize="normal"
 		android:id="@+id/musicrecyclerhelpFloatingActionButton1"
-		style="@style/Widget.Design.FloatingActionButton"
 		android:layout_alignParentRight="true"
 		android:layout_centerVertical="true"/>
 
