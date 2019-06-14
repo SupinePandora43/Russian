@@ -29,6 +29,7 @@ branches:
     - master
 
 before_install:
+- touch ~/.android/repositories.cfg
 - yes | sdkmanager "platforms;android-$API"
 - nvm install 11
 install:
@@ -44,7 +45,7 @@ stages:
 - deploy
 jobs:
   allow_failures:
-    - language: android
+  - language: android
   include:
     - stage: deploy
       before_install: nvm install 11
