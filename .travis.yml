@@ -18,7 +18,7 @@ android:
   - platform-tools
   - build-tools-28.0.3
   - android-28
-  - android-$API
+  # - android-$API
   - sys-img-$ABI-android-$API
   licenses:
   - 'android-sdk-preview-license-d099d938'
@@ -27,17 +27,16 @@ android:
 env:
   global:
   - ADB_INSTALL_TIMEOUT=8
-  - ABI=armeabi-v7a
   matrix:
-  - API=16
-  - API=19
-  - API=28
-  # - API=19 ABI=armeabi-v7a #
-  # - API=28 ABI=x86_64      #
-  # - API=19 ABI=x86         #
-  # - API=16 ABI=armeabi-v7a #
-  # - API=16 ABI=x86         #
-  # - API=16 ABI=armeabi     #
+  - API=28 ABI=x86         #
+
+  - API=19 ABI=x86         #
+  - API=19 ABI=armeabi-v7a #
+  - API=19 ABI=armeabi     #
+
+  - API=16 ABI=x86         #
+  - API=16 ABI=armeabi-v7a #
+  - API=16 ABI=armeabi     #
 
 branches:
   only:
@@ -60,16 +59,7 @@ matrix:
   fast_finish: true
   allow_failures:
   - language: android
-  exclude:
-    - env: API=28 ABI=x86_64
-    - env: API=28 ABI=armeabi-v7a
-    - env: API=19 ABI=x86_64
-    - env: API=16 ABI=x86_64
   include:
-  - env:
-    - ABI=x86_64
-    - ABI=x86
-    - ABI=armeabi-v7a
   - name: deploy
     env: API=28 ABI=x86_64
     before_install: nvm install 11
