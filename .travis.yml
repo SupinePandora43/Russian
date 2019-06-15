@@ -29,11 +29,11 @@ env:
   matrix:
   - API=28 ABI="google_apis;x86"         #
 
-  # - API=19 ABI=x86         #
+  - API=19 ABI="google_apis;x86"         #
   - API=19 ABI="google_apis;armeabi-v7a" #
 
-  # - API=16 ABI=x86         #
-  # - API=16 ABI=armeabi-v7a #
+  - API=16 ABI="google_apis;x86"         #
+  - API=16 ABI="google_apis;armeabi-v7a" #
 
 branches:
   only:
@@ -56,18 +56,18 @@ before_install:
 # Silence warning.
 - mkdir -p ~/.android
 - touch ~/.android/repositories.cfg
-- yes | sdkmanager --licenses
-- sdkmanager "tools" "platform-tools" > /dev/null
-- sdkmanager --list | head -15
-- sdkmanager "build-tools;28.0.3" "platforms;android-28" > /dev/null
-- sdkmanager --list | head -15
-- nvm install 11
+- yes | sdkmanager --licenses                                        # accept all licenses
+- sdkmanager "tools" "platform-tools" > /dev/null                    # tools + platform-tools
+- sdkmanager --list | head -15                                       # packages list
+- sdkmanager "build-tools;28.0.3" "platforms;android-28" > /dev/null # build-tools + compile API version
+- sdkmanager --list | head -15                                       # packages list
+- nvm install 11                                                     # for Glide download
 
 install:
-- sdkmanager "emulator" > /dev/null                        # emulator
-- sdkmanager "platforms;android-$API" > /dev/null          # android platform
-- sdkmanager "system-images;android-$API;$ABI" > /dev/null # emulator android system image
-- node ./travis_scripts/get-glide.js
+- sdkmanager "emulator" > /dev/null                                  # emulator
+- sdkmanager "platforms;android-$API" > /dev/null                    # android platform
+- sdkmanager "system-images;android-$API;$ABI" > /dev/null           # emulator android system image
+- node ./travis_scripts/get-glide.js                                 # Glide
 
 before_script:
 - echo no | avdmanager create avd -n test -k "system-images;android-$API;$ABI"
