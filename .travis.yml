@@ -27,10 +27,10 @@ env:
   global:
   - ADB_INSTALL_TIMEOUT=8
   matrix:
-  - API=28 ABI=google_apis;x86         #
+  - API=28 ABI="google_apis;x86"         #
 
   # - API=19 ABI=x86         #
-  - API=19 ABI=google_apis;armeabi-v7a #
+  - API=19 ABI="google_apis;armeabi-v7a" #
 
   # - API=16 ABI=x86         #
   # - API=16 ABI=armeabi-v7a #
