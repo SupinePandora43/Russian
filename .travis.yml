@@ -1,7 +1,6 @@
-language: android
+language: generic
 sudo: required
 os: linux
-dist: trusty
 before_cache:
 - rm -fr $HOME/.gradle/caches/5.2.1
 - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
@@ -12,26 +11,26 @@ cache:
   - $HOME/.gradle/caches/
   - $HOME/.gradle/wrapper/
   - $HOME/.android/build-cache
-android:
-  components:
-  - tools
-  - platform-tools
-  - build-tools-28.0.3
-  - android-28
-  - android-$API
-  - sys-img-$ABI-android-$API
-  licenses:
-  - 'android-sdk-preview-license-d099d938'
-  - 'android-sdk-license-.+'
-  - 'google-gdk-license-.+'
+# android:
+#   components:
+#   - tools
+#   - platform-tools
+#   - build-tools-28.0.3
+#   - android-28
+#   - android-$API
+#   - sys-img-$ABI-android-$API
+#   licenses:
+#   - 'android-sdk-preview-license-d099d938'
+#   - 'android-sdk-license-.+'
+#   - 'google-gdk-license-.+'
 env:
   global:
   - ADB_INSTALL_TIMEOUT=8
   matrix:
-  - API=28 ABI=x86         #
+  - API=28 ABI=google_apis;x86         #
 
   # - API=19 ABI=x86         #
-  - API=19 ABI=armeabi-v7a #
+  - API=19 ABI=google_apis;armeabi-v7a #
 
   # - API=16 ABI=x86         #
   # - API=16 ABI=armeabi-v7a #
@@ -39,21 +38,49 @@ env:
 branches:
   only:
     - master
-
 before_install:
-- sudo apt-get install -y --no-install-recommends lib32stdc++6 libstdc++6 > /dev/null
-# - android-update-sdk --components=sys-img-$ABI-android-$API --accept-licenses='android-sdk-license-[0-9a-f]{8}'
-# - touch ~/.android/repositories.cfg
-# - yes | sdkmanager "platforms;android-$API"
+- |
+  if [ $TRAVIS_OS_NAME == "linux" ]; then
+    export DISPLAY=:99.0
+    sh -e /etc/init.d/xvfb start
+    sleep 3 # give xvfb some time to start
+  fi
+
+- ANDROID_TOOLS=4333796 # android-28
+- export ANDROID_HOME=~/android-sdk
+- wget -q "https://dl.google.com/android/repository/sdk-tools-linux-$ANDROID_TOOLS.zip" -O android-sdk-tools.zip
+- unzip -q android-sdk-tools.zip -d ${ANDROID_HOME}
+- rm android-sdk-tools.zip
+- PATH=${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin:${ANDROID_HOME}/platform-tools
+# Silence warning.
+- mkdir -p ~/.android
+- touch ~/.android/repositories.cfg
+- yes | sdkmanager --licenses
+- sdkmanager "emulator" "tools" "platform-tools" > /dev/null
+- sdkmanager --list | head -15
+- sdkmanager "build-tools;28.0.3" "platforms;android-28" > /dev/null
+- sdkmanager "platforms;android-$API" > /dev/null
+- sdkmanager "system-images;android-$API;$ABI" > /dev/null
+- sdkmanager --list | head -15
+- echo no | avdmanager create avd -n test -k "system-images;android-$API;$ABI"
+- |
+  if [[ "${API}${ABI}" == "25google_apis;armeabi-v7a" || "${API}${ABI}" == "24google_apis;armeabi-v7a" ]]; then
+    EMU_PARAMS="-no-window -gpu swiftshader"
+  else
+    EMU_PARAMS="-no-boot-anim -gpu off"
+  fi
+  $ANDROID_HOME/emulator/emulator -avd test -no-accel -no-audio $EMU_PARAMS $EMU_ADDITIONAL_OPTIONS ${EMU_DEBUG} &
 - nvm install 11
+
 install:
 - node ./travis_scripts/get-glide.js
-- echo no | android create avd --force -n test -t android-$API --abi $ABI -c 100M
-- emulator -avd test -no-accel -no-audio -no-window &
-- android-wait-for-emulator
-- adb shell input keyevent 82 &
-before_script: chmod +x ./gradlew
+
+before_script:
+- ./travis_scripts/android-wait-for-emulator.sh
+- adb shell input keyevent 82
+- chmod +x ./gradlew
 script: ./gradlew connectedCheck
+
 matrix:
   fast_finish: true
   allow_failures:

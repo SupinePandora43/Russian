@@ -13,7 +13,7 @@ function deploy() {
 				if (process.env.CI == "true") {
 					console.log("DEPLOY: CI")
 					if (process.platform == "linux" || process.platform == "darwin") {
-						fs.writeFile(__dirname + "/appetize_url.sh", "#!/bin/bash\nexport APPETIZE_URL='" + output.publicURL+"'", (err) => {
+						fs.writeFile(__dirname + "/appetize_url.sh", "#!/bin/bash\nexport APPETIZE_URL='" + output.publicURL.toString()+"'", (err) => {
 							if (err == null) {
 								console.log("DEPLOY: Open appetize_url.sh");
 							} else {
