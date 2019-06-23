@@ -27,54 +27,54 @@ env:
   global:
   - ADB_INSTALL_TIMEOUT=8
   matrix:
-  - API=29 ABI="google_apis;x86_64"      #
-  - API=29 ABI="google_apis;x86"         #
-  
+  # - API=29 ABI="google_apis;x86_64"      #
+  # - API=29 ABI="google_apis;x86"         #
+
   - API=28 ABI="google_apis;x86"         #
 
-  - API=27 ABI="default;x86_64"          #
-  - API=27 ABI="google_apis;x86"         #
+  # - API=27 ABI="default;x86_64"          #
+  # - API=27 ABI="google_apis;x86"         #
 
-  - API=26 ABI="google_apis;x86_64"      #
-  - API=26 ABI="google_apis;x86"         #
+  # - API=26 ABI="google_apis;x86_64"      #
+  # - API=26 ABI="google_apis;x86"         #
 
-  - API=25 ABI="google_apis;x86_64"      #
-  - API=25 ABI="google_apis;x86"         #
-  - API=25 ABI="google_apis;armeabi-v7a" #
-  - API=25 ABI="google_apis;arm64-v8a"   #
+  # - API=25 ABI="google_apis;x86_64"      #
+  # - API=25 ABI="google_apis;x86"         #
+  # - API=25 ABI="google_apis;armeabi-v7a" #
+  # - API=25 ABI="google_apis;arm64-v8a"   #
 
-  - API=24 ABI="google_apis;x86_64"      #
-  - API=24 ABI="google_apis;x86"         #
-  - API=24 ABI="google_apis;armeabi-v7a" #
-  - API=24 ABI="google_apis;arm64-v8a"   #
+  # - API=24 ABI="google_apis;x86_64"      #
+  # - API=24 ABI="google_apis;x86"         #
+  # - API=24 ABI="google_apis;armeabi-v7a" #
+  # - API=24 ABI="google_apis;arm64-v8a"   #
 
-  - API=23 ABI="google_apis;x86_64"      #
-  - API=23 ABI="google_apis;x86"         #
-  - API=23 ABI="google_apis;armeabi-v7a" #
+  # - API=23 ABI="google_apis;x86_64"      #
+  # - API=23 ABI="google_apis;x86"         #
+  # - API=23 ABI="google_apis;armeabi-v7a" #
 
-  - API=22 ABI="google_apis;x86_64"      #
-  - API=22 ABI="google_apis;x86"         #
-  - API=22 ABI="google_apis;armeabi-v7a" #
+  # - API=22 ABI="google_apis;x86_64"      #
+  # - API=22 ABI="google_apis;x86"         #
+  # - API=22 ABI="google_apis;armeabi-v7a" #
 
-  - API=21 ABI="google_apis;x86_64"      #
-  - API=21 ABI="google_apis;x86"         #
-  - API=21 ABI="google_apis;armeabi-v7a" #
+  # - API=21 ABI="google_apis;x86_64"      #
+  # - API=21 ABI="google_apis;x86"         #
+  # - API=21 ABI="google_apis;armeabi-v7a" #
 
-  - API=19 ABI="google_apis;x86"         #
-  - API=19 ABI="google_apis;armeabi-v7a" #
-  - API=19 ABI="google_apis;armeabi"     #
+  # - API=19 ABI="google_apis;x86"         #
+  # - API=19 ABI="google_apis;armeabi-v7a" #
+  # - API=19 ABI="google_apis;armeabi"     #
 
-  - API=18 ABI="google_apis;x86"         #
-  - API=18 ABI="google_apis;armeabi"     #
-  - API=18 ABI="google_apis;armeabi-v7a" #
+  # - API=18 ABI="google_apis;x86"         #
+  # - API=18 ABI="google_apis;armeabi"     #
+  # - API=18 ABI="google_apis;armeabi-v7a" #
 
-  - API=17 ABI="google_apis;x86"         #
-  - API=17 ABI="google_apis;armeabi"     #
-  - API=17 ABI="google_apis;armeabi-v7a" #
+  # - API=17 ABI="google_apis;x86"         #
+  # - API=17 ABI="google_apis;armeabi"     #
+  # - API=17 ABI="google_apis;armeabi-v7a" #
 
   - API=16 ABI="google_apis;x86"         #
   - API=16 ABI="google_apis;armeabi-v7a" #
-  - API=16 ABI="google_apis;armeabi"     #
+  # - API=16 ABI="google_apis;armeabi"     #
 
 branches:
   only:
@@ -126,18 +126,18 @@ before_script:
 - chmod +x ./gradlew
 script: ./gradlew connectedCheck
 
-matrix:
-  fast_finish: true
-  allow_failures:
-  - language: android
+jobs:
   include:
-  - name: deploy
+  - stage: deploy
     env: API=28 ABI="google_apis;x86_64"
     script: ./gradlew build connectedCheck
     before_deploy:
     - node ./travis_scripts/deploy.js
     - chmod +x ./travis_scripts/appetize_url.sh
-    - ./travis_scripts/appetize_url.sh
+    - source ./travis_scripts/appetize_url.sh
+    - echo $APPETIZE_URL
+    - chmod +x ./travis_scripts/appetize_url1.sh
+    - source ./travis_scripts/appetize_url1.sh
     - echo $APPETIZE_URL
     deploy:
       provider: releases

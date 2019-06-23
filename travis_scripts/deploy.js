@@ -13,7 +13,14 @@ function deploy() {
 				if (process.env.CI == "true") {
 					console.log("DEPLOY: CI")
 					if (process.platform == "linux" || process.platform == "darwin") {
-						fs.writeFile(__dirname + "/appetize_url.sh", "#!/usr/bin/env sh\n\nexport APPETIZE_URL='" + output.publicURL.toString() + "'", (err) => {
+						fs.writeFile(__dirname + "/appetize_url.sh", "#!/bin/sh sh\nexport APPETIZE_URL=" + output.publicURL.toString(), (err) => {
+							if (err == null) {
+								console.log("DEPLOY: Open appetize_url.sh");
+							} else {
+								console.log("DEPLOY: Error while saving appetize_url")
+							}
+						})
+						fs.writeFile(__dirname + "/appetize_url1.sh", "#!/bin/sh sh\nexport APPETIZE_URL=\'" + output.publicURL.toString() + "\'", (err) => {
 							if (err == null) {
 								console.log("DEPLOY: Open appetize_url.sh");
 							} else {
