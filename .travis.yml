@@ -104,7 +104,7 @@ matrix:
       file_glob: true
       file: "./app/build/outputs/apk/*/*.apk"
       skip_cleanup: true
-      name: $(date +'%Y.%m.%d.%H:%M.%S')$
+      name: $TRAVIS_COMMIT_MESSAGE
       on:
         branch: master
     # - &test
