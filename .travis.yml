@@ -94,7 +94,6 @@ matrix:
     env: API=28 ABI="google_apis;x86_64"
     script: ./gradlew build connectedCheck
     before_deploy:
-    - export TRAVIS_TAG=latest
     - node ./travis_scripts/deploy.js
     - chmod +x ./travis_scripts/appetize_url.sh
     - ./travis_scripts/appetize_url.sh
@@ -105,7 +104,7 @@ matrix:
       file_glob: true
       file: "./app/build/outputs/apk/*/*.apk"
       skip_cleanup: true
-      name: $(date +'%Y.%m.%d.%H:%M.%S')
+      name: $(date +'%Y.%m.%d.%H:%M.%S')$
       on:
         branch: master
     # - &test
