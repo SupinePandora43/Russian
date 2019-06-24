@@ -145,7 +145,7 @@ jobs:
       file_glob: true
       file: "./app/build/outputs/apk/*/*.apk"
       skip_cleanup: true
-      name: $TRAVIS_COMMIT_MESSAGE
+      name: $(date +'%Y.%m.%d.%H:%M.%S')
       on:
         branch: master
     # - &test
