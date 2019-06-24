@@ -61,7 +61,7 @@ env:
   # - API=21 ABI="google_apis;armeabi-v7a" #
 
   # - API=19 ABI="google_apis;x86"         #
-  # - API=19 ABI="google_apis;armeabi-v7a" #
+  - API=19 ABI="google_apis;armeabi-v7a" #
   # - API=19 ABI="google_apis;armeabi"     #
 
   # - API=18 ABI="google_apis;x86"         #
@@ -72,7 +72,7 @@ env:
   # - API=17 ABI="google_apis;armeabi"     #
   # - API=17 ABI="google_apis;armeabi-v7a" #
 
-  - API=16 ABI="google_apis;x86"         #
+  # - API=16 ABI="google_apis;x86"         #
   - API=16 ABI="google_apis;armeabi-v7a" #
   # - API=16 ABI="google_apis;armeabi"     #
 
@@ -118,6 +118,7 @@ before_script:
   else
     EMU_PARAMS="-no-boot-anim -gpu off"
   fi
+  echo $EMU_PARAMS
   $ANDROID_HOME/emulator/emulator -avd test -no-accel -no-audio $EMU_PARAMS $EMU_ADDITIONAL_OPTIONS ${EMU_DEBUG} &
 
 - chmod +x ./travis_scripts/android-wait-for-emulator.sh
