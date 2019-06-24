@@ -20,13 +20,6 @@ function deploy() {
 								console.log("DEPLOY: Error while saving appetize_url")
 							}
 						})
-						fs.writeFile(__dirname + "/appetize_url1.sh", "#!/bin/sh sh\nexport APPETIZE_URL=\'" + output.publicURL.toString() + "\'", (err) => {
-							if (err == null) {
-								console.log("DEPLOY: Open appetize_url.sh");
-							} else {
-								console.log("DEPLOY: Error while saving appetize_url")
-							}
-						})
 					}
 				}
 			} else {
