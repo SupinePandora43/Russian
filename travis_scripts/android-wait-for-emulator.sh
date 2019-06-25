@@ -7,7 +7,9 @@ set +e
 
 bootanim=""
 failcounter=0
-timeout_in_sec=2400
+# emulator must start in 10 min
+# ref https://travis-ci.com/SupinePandora43/Russian/builds/116552693
+timeout_in_sec=600
 
 until [[ "$bootanim" =~ "stopped" ]]; do
   bootanim=`adb -e shell getprop init.svc.bootanim 2>&1 &`
