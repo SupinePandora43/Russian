@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'jacoco-android'
 // apply plugin: 'android'
 //apply plugin: 'kotlin-android'
 // buildscript{
@@ -29,6 +30,9 @@ android {
 		//multiDexEnabled true
     }
     buildTypes {
+		debug {
+			testCoverageEnabled = true
+		}
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
@@ -37,6 +41,12 @@ android {
 	lintOptions {
 		abortOnError false
 	}
+}
+
+jacocoAndroidUnitTestReport {
+	csv.enabled false
+	html.enabled true
+	xml.enabled true
 }
 
 dependencies {
