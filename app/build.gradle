@@ -1,5 +1,4 @@
 apply plugin: 'com.android.application'
-apply plugin: 'jacoco-android'
 // apply plugin: 'android'
 //apply plugin: 'kotlin-android'
 // buildscript{
@@ -43,15 +42,9 @@ android {
 	}
 }
 
-jacocoAndroidUnitTestReport {
-	csv.enabled false
-	html.enabled true
-	xml.enabled true
-}
-
 dependencies {
 	implementation 'androidx.appcompat:appcompat:1.0.2'
-	implementation 'com.google.android.material:material:1.1.0-alpha07'
+	implementation 'com.google.android.material:material:1.1.0-alpha08'
 	implementation 'com.jjoe64:graphview:4.2.2'
 	// implementation project(':GraphView')
 
@@ -61,7 +54,9 @@ dependencies {
 	implementation project(':RecyclerIntentChooser')
 	//implementation 'junit:junit:+'
 	// implementation project(':RippleDrawableSupport')
-	implementation 'com.github.ozodrukh:RippleDrawable:2.0.1'
+	implementation 'com.github.ozodrukh:RippleDrawable:2.0.0'
+	testImplementation 'junit:junit:4.12'
+	testImplementation "org.robolectric:robolectric:4.3"
 
 	//implementation project(':fabtoolbar');
 //	implementation 'info.kimjihyok:droid-vizu:+'
