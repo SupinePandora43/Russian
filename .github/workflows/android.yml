@@ -7,13 +7,8 @@ jobs:
     name: Emulator
     strategy:
       matrix:
-        include:
-        - node: 4.0.0
-          os: macOS-10.14
-        - rvm: 6.0.0
-          os: macOS-10.14
-        - rvm: 8.0.0
-          os: macOS-10.14
+      - API: [28, 19, 16]
+      - ABI: [google_apis;x86, google_apis;armeabi-v7a, google_apis;armeabi-v7a]
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
