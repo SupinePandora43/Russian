@@ -17,6 +17,7 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: 12.x
+    - name: glide
       run: npm run glide
     - name: Build with Gradle
       run: ./gradlew build
