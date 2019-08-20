@@ -15,17 +15,6 @@ jobs:
           ABI: google_apis;armeabi-v7a
         - API: 16
           ABI: google_apis;armeabi-v7a
-    strategy:
-      matrix:
-      - API: [nope, nopE]
-      - ABI: [nope, nopE]
-        include:
-        - API: 28
-          ABI: google_apis;x86
-        - API: 19
-          ABI: google_apis;armeabi-v7a
-        - API: 16
-          ABI: google_apis;armeabi-v7a
     steps:
     - uses: actions/checkout@v1
     - name: set up JDK 1.8
