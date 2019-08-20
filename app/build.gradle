@@ -19,6 +19,11 @@ compileOptions {
       //main.java.srcDirs += 'src/main/java'
 	  //main.res.srcDirs += 'src/main/res'
 	  //}
+	  testOptions {
+    unitTests {
+      includeAndroidResources = true
+    }
+  }
     defaultConfig {
         applicationId "ru.supinepandora.russianhelper"
         minSdkVersion 16  //from 14 to 15 (for fix errors:aapt)
@@ -47,6 +52,7 @@ compileOptions {
 	}
 }
 test {
+    useJUnit()
     testLogging {
         exceptionFormat = 'full'
     }
