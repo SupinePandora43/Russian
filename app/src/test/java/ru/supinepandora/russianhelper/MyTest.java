@@ -5,11 +5,10 @@ import org.junit.runner.RunWith;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
 
-
+@RunWith(RobolectricTestRunner.class)
 public class MyTest {
 	@Test
 	public void myTest1() {
-		Activity act = Robolectric.setupActivity(MainActivity.class);
-		Robolectric.buildActivity(MainActivity.class).create();
+		Activity act = Robolectric.buildActivity(MainActivity.class).create().resume().get();
 	}
 }
