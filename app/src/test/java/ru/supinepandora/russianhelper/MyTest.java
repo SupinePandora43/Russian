@@ -9,6 +9,6 @@ import org.robolectric.RobolectricTestRunner;
 public class MyTest {
 	@Test
 	public void myTest1() {
-		Activity act = Robolectric.buildActivity(MainActivity.class).create().resume().get();
+		MainActivity act = Robolectric.buildActivity(MainActivity.class).create().resume().get();
 	}
 }
