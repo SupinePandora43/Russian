@@ -8,7 +8,7 @@ jobs:
     strategy:
       matrix:
       - API: [28, 19, 16]
-      - ABI: [google_apis;x86, google_apis;armeabi-v7a, google_apis;armeabi-v7a]
+      - ABI: [google_apis;x86, google_apis;armeabi-v7a]
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
