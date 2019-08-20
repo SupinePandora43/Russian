@@ -8,8 +8,8 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-      - API
-      - ABI
+      - API: [nope, nopE]
+      - ABI: [nope, nopE]
         include:
         - API: 28
           ABI: google_apis;x86
