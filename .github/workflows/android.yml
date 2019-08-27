@@ -30,8 +30,7 @@ jobs:
         mkdir -p ~/.android
         touch ~/.android/repositories.cfg
         yes | sdkmanager --licenses                                        # accept all licenses
-    - name: Download SDKs
-      run: |
+        
         sdkmanager "tools" "platform-tools" > /dev/null                    # tools + platform-tools
         sdkmanager --list | head -15                                       # packages list
         sdkmanager "build-tools;28.0.3" "platforms;android-28" > /dev/null # build-tools + compile API version
@@ -39,24 +38,22 @@ jobs:
         sdkmanager "emulator" > /dev/null
         sdkmanager "platforms;android-${{ matrix.API }}" > /dev/null
         sdkmanager "system-images;android-${{ matrix.API }};${{ matrix.ABI }}" > /dev/null
-    - name: Start Emulator
-      run: |
+        
         echo no | avdmanager create avd -n test -k "system-images;android-$API;$ABI"
         if [[ "${API}${ABI}" == "25google_apis;armeabi-v7a" || "${API}${ABI}" == "24google_apis;armeabi-v7a" ]]; then EMU_PARAMS="-no-window -gpu swiftshader" else EMU_PARAMS="-no-boot-anim -gpu off" fi
         $ANDROID_HOME/emulator/emulator -avd test -no-accel -no-audio $EMU_PARAMS $EMU_ADDITIONAL_OPTIONS ${EMU_DEBUG} &
-    - name: Wait for emulator
-      run: |
+        
         chmod +x ./travis_scripts/android-wait-for-emulator.sh
         ./travis_scripts/android-wait-for-emulator.sh
         adb shell input keyevent 82 &
-    - name: Connected Check
-      run: |
-        ./gradlew connectedCheck
     - name: nodejs
       uses: actions/setup-node@v1
       with:
         node-version: 12.x
     - name: glide
       run: npm run glide
+    - name: Connected Check
+      run: |
+        ./gradlew connectedCheck
     - name: Build with Gradle
       run: ./gradlew build --info
