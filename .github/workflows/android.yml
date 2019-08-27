@@ -9,6 +9,13 @@ jobs:
       matrix:
         API: [28, 19, 16]
         ABI: [google_apis;x86, google_apis;armeabi-v7a]
+        exclude: 
+          - API: 28
+            ABI: google_apis;armeabi-v7a
+          - API: 19
+            ABI: google_apis;x8
+          - API: 16
+            ABI: google_apis;x8
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
