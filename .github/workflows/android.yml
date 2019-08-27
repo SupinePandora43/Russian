@@ -32,7 +32,7 @@ jobs:
         sdkmanager "emulator" > /dev/null
         sdkmanager "system-images;android-28;google_apis;x86" > /dev/null
         
-        echo no | avdmanager create avd -n test -k "system-images;android-$API;$ABI"
+        echo no | avdmanager create avd -n test -k "system-images;android-28;google_apis;x86"
         if [[ "${API}${ABI}" == "25google_apis;armeabi-v7a" || "${API}${ABI}" == "24google_apis;armeabi-v7a" ]]; then EMU_PARAMS="-no-window -gpu swiftshader" else EMU_PARAMS="-no-boot-anim -gpu off" fi
         $ANDROID_HOME/emulator/emulator -avd test -no-accel -no-audio $EMU_PARAMS $EMU_ADDITIONAL_OPTIONS ${EMU_DEBUG} &
         
