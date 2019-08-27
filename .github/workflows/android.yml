@@ -13,9 +13,9 @@ jobs:
           - API: 28
             ABI: google_apis;armeabi-v7a
           - API: 19
-            ABI: google_apis;x8
+            ABI: google_apis;x86
           - API: 16
-            ABI: google_apis;x8
+            ABI: google_apis;x86
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
