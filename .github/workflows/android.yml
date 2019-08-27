@@ -16,6 +16,7 @@ jobs:
             ABI: google_apis;x86
     runs-on: ubuntu-latest
     steps:
+    continue-on-error: true
     - uses: actions/checkout@v1
     - name: set up JDK 1.8
       uses: actions/setup-java@v1
