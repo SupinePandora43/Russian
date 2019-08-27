@@ -5,13 +5,11 @@ jobs:
     name: Emulator
     strategy:
       matrix:
-        env:
-          API: [28, 19, 16]
-          ABI: [google_apis;x86, google_apis;armeabi-v7a]
+        API: [28, 19, 16]
+        ABI: [google_apis;x86, google_apis;armeabi-v7a]
         exclude: 
-          - env:
-              API: 28
-              ABI: google_apis;armeabi-v7a
+          - API: 28
+            ABI: google_apis;armeabi-v7a
           - API: 19
             ABI: google_apis;x86
           - API: 16
