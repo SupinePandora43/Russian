@@ -35,7 +35,9 @@ jobs:
         mkdir -p ~/.android
         touch ~/.android/repositories.cfg
         yes | sdkmanager --licenses                                        # accept all licenses
-        
+        echo ----------------------
+        echo ${{ matrix.API }}
+        echo ----------------------
         sdkmanager "tools" "platform-tools" > /dev/null                    # tools + platform-tools
         sdkmanager --list | head -15                                       # packages list
         sdkmanager "build-tools;28.0.3" "platforms;android-28" > /dev/null # build-tools + compile API version
