@@ -11,6 +11,8 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 1.8
+    - name: Build with Gradle
+      run: ./gradlew build
     #- name: Download Android SDK
     #  run: |
     #    ANDROID_TOOLS=4333796 # android-28
@@ -39,16 +41,16 @@ jobs:
     #    chmod +x ./travis_scripts/android-wait-for-emulator.sh
     #    ./travis_scripts/android-wait-for-emulator.sh
     #    adb shell input keyevent 82 &
-    - name: nodejs
-      uses: actions/setup-node@v1
-      with:
-        node-version: 12.x
-    - name: glide
-      run: npm run glide
-    - name: setup-android
-      uses: msfjarvis/setup-android@0.2
-    - name: Connected Check
-      run: |
-        ./gradlew connectedCheck
-    - name: Build with Gradle
-      run: ./gradlew build --info
+    #- name: nodejs
+    #  uses: actions/setup-node@v1
+    #  with:
+    #    node-version: 12.x
+    #- name: glide
+    #  run: npm run glide
+    #- name: setup-android
+    #  uses: msfjarvis/setup-android@0.2
+    #- name: Connected Check
+    #  run: |
+    #    ./gradlew connectedCheck
+    #- name: Build with Gradle
+    #  run: ./gradlew build --info
