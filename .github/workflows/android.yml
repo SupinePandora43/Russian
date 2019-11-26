@@ -6,9 +6,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
-    - run: |
-        echo ${GRADLE_USER_HOME}
-        echo ${GRADLE_HOME}
     - name: nodejs
       uses: actions/setup-node@v1
       with:
@@ -29,7 +26,7 @@ jobs:
     - name: Cache
       uses: actions/cache@v1.0.3
       with:
-        path: ${GRADLE_USER_HOME}
+        path: ${GRADLE_HOME}
         key: cache
     #- name: Download Android SDK
     #  run: |
