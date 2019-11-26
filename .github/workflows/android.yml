@@ -21,7 +21,12 @@ jobs:
     - uses: actions/upload-artifact@v1
       with:
         name: Apks
-        path:  ./app/build/outputs/apk
+        path:  ./app/build/outputs/apk/*/*.apk
+    - name: Cache
+      uses: actions/cache@v1.0.3
+      with:
+        path: ./
+        key: cache
     #- name: Download Android SDK
     #  run: |
     #    ANDROID_TOOLS=4333796 # android-28
