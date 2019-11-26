@@ -21,7 +21,7 @@ jobs:
     - uses: actions/upload-artifact@v1
       with:
         name: Apks
-        path:  ./app/build/outputs/apk/*/*.apk
+        path:  ./app/build/outputs/apk
     - name: Cache
       uses: actions/cache@v1.0.3
       with:
