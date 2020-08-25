@@ -65,7 +65,7 @@ dependencies {
 	// implementation project(':RippleDrawableSupport')
 	implementation 'com.github.ozodrukh:RippleDrawable:2.0.0'
 	testImplementation 'junit:junit:4.12'
-	testImplementation "org.robolectric:robolectric:4.3"
+	testImplementation "org.robolectric:robolectric:4.4"
 
 	//implementation project(':fabtoolbar');
 //	implementation 'info.kimjihyok:droid-vizu:+'
